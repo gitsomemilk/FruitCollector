@@ -1,0 +1,17 @@
+.Strawberry{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+Button{
+    margin-left: 10px;
+}
+.count{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.Banaan{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
