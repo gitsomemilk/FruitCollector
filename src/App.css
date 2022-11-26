@@ -1,10 +1,15 @@
+
+
+
 .Strawberry{
     display: flex;
     flex-direction: row;
     margin-left: 20px;
+
 }
 Button{
     margin-left: 10px;
+
 }
 .count{
     margin-left: 10px;
@@ -14,4 +19,22 @@ Button{
     display: flex;
     flex-direction: row;
     margin-left: 20px;
+}
+.Appel{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+.Kiwi{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+.opmerkingField {
+    height: 100px;
+    width: 300px;
 }
