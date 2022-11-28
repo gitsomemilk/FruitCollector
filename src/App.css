@@ -1,40 +1,81 @@
-
-
-
-.Strawberry{
-    display: flex;
-    flex-direction: row;
-    margin-left: 20px;
-
+*{
+    box-sizing: border-box;
 }
-Button{
-    margin-left: 10px;
-
-}
-.count{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.Banaan{
-    display: flex;
-    flex-direction: row;
-    margin-left: 20px;
-}
-.Appel{
-    display: flex;
-    flex-direction: row;
-    margin-left: 20px;
-}
-.Kiwi{
-    display: flex;
-    flex-direction: row;
-    margin-left: 20px;
-}
-form{
+#root {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color:#F9F5FF ;
 }
-.opmerkingField {
-    height: 100px;
-    width: 300px;
+article {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    padding: 4px 8px;
+    width: 100%;
+}
+.fruitBasket article button{
+    margin: 0 8px;
+    padding: 2px 8px;
+    font-size: 16px;
+    width: auto;
+    border: 1px solid #ededed;
+}
+textarea {
+    display: block;
+}
+form section {
+    margin: 20px 0 0 0;
+}
+.fruitBasket button{
+    width: 500px;
+    padding: 8px 16px;
+    margin: 8px;
+    border: 1px solid black;
+}
+.fruitBasket button,
+form button {
+    margin: 8px 0;
+    width: 100%;
+    padding: 8px 0;
+}
+form,
+.fruit-counters {
+    width: 500px;
+    padding: 8px 16px;
+    margin: 8px;
+    border: 1px solid black;
+    background-color:#D4C2FC ;
+}
+
+nav{
+
+
+    gap: 30px;
+    padding: 20px;
+   background-color: #28262C;
+    color: #F9F5FF;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import Button from "./components/Button";
+import Counter from "./components/Counter";
+import InputField from "./components/InputField";
 
 
 function App() {
@@ -25,210 +27,142 @@ function App() {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(`
-        Voornaam: ${firstname}, 
-        Achternaam: ${lastname}, 
-        Leeftijd: ${age}, 
-        Postcode: ${zipcode}, 
+        Voornaam: ${firstname},
+        Achternaam: ${lastname},
+        Leeftijd: ${age},
+        Postcode: ${zipcode},
         Bezorgfrequentie: ${deliveryFrequency},
+        Tijdmoment: ${deliveryTimeslot},
         Opmerkingen: ${remark},
-        Algemene voorwaarden: ${agreeTerms}
-    `);
-        console.log(`Fruitmand bestelling - aardbeiden: ${strawberries}, bananen: ${bananas}, appels: ${apples}, kiwi's: ${kiwis}\`);
-        `)
+        Algemene voorwaarden: ${agreeTerms},
+        `);
+        console.log(`Fruitmand bestelling - aardbeien: ${aardbei}, bananen: ${banaan}, appels: ${appel}, kiwi's : ${kiwi} `);
 
-    }
-
-    // function blok voor alle fruitjes
-    function addStrawberry() {
-        console.log("ik ben aangeklikt")
-        setAardbei(aardbei => aardbei + 1)
-
-    }
-
-    function substractStrawberry() {
-        console.log("ik ben aangeklikt")
-        if (aardbei >= 1) {
-            setAardbei(aardbei => aardbei - 1)
-        }
+    
 
 
     }
 
-    function addBanaan() {
-        console.log("ik ben aangeklikt")
-        setBanaan(banaan => banaan + 1)
-
-    }
-
-    function substractBanaan() {
-        console.log("ik ben aangeklikt")
-        if (banaan >= 1) {
-            setBanaan(banaan => banaan - 1)
-        }
-
-
-    }
-
-    function addAppel() {
-        console.log("ik ben aangeklikt")
-        setAppel(appel => appel + 1)
-
-    }
-
-    function substractAppel() {
-        console.log("ik ben aangeklikt")
-        if (appel >= 1) {
-            setAppel(appel => appel - 1)
-        }
-
-
-    }
-
-    function addKiwi() {
-        console.log("ik ben aangeklikt")
-        setKiwi(kiwi => kiwi + 1)
-
-    }
-
-    function substractKiwi() {
-        console.log("ik ben aangeklikt")
-        if (kiwi >= 1) {
-            setKiwi(kiwi => kiwi - 1)
-        }
-
-
-    }
 
     function resetAll() {
-        console.log("ik ben aangeklikt")
-        setKiwi(kiwi => 0)
-        setAppel(appel => 0)
-        setAardbei(aardbei => 0)
-        setBanaan(banaan => 0)
+        console.log("de reset is aangeklikt")
+        setKiwi( 0)
+        setAppel( 0)
+        setAardbei(0)
+        setBanaan(0)
     }
 
 
     return (
         <>
+            <nav>
+                <ul>
+                    <li><a href="@">Info</a></li>
+                    <li><a href="@">Winkelwagen</a></li>
+                    <li><a href="@">Contact</a></li>
+                </ul>
+            </nav>
             <h1>Fruitmand bezorgservice</h1>
             <section className="fruitBasket">
                 <article>
                     <h2> 🍓 Aardbeien </h2>
-                    <Button type="button" className="btnplus" clickHandler={addStrawberry}>
-                        +1
-                    </Button>
-                    <p className="count"><strong>{aardbei}</strong></p>
-
-                    <Button type="button" className="btnmin" clickHandler={substractStrawberry} disabled={aardbei <= 0}>
-                        -1
-                    </Button>
+                    <Counter
+                    fruitCount={aardbei}
+                    setFruitCount={setAardbei}
+                    />
                 </article>
 
 
                 <article>
                     <h2> 🍌 Bananen</h2>
-                    <Button type="button" className="btnplus" clickHandler={addBanaan}>
-                        +1
-                    </Button>
-                    <p className="count"><strong>{banaan}</strong></p>
-
-                    <Button type="button" className="btnmin" clickHandler={substractBanaan} disabled={banaan <= 0}>
-                        -1
-                    </Button>
+                    <Counter
+                        fruitCount={banaan}
+                        setFruitCount={setBanaan}
+                    />
                 </article>
 
                 <article>
                     <h2>🍏 Appels</h2>
-                    <Button type="button" className="btnplus" clickHandler={addAppel}>
-                        +1
-                    </Button>
-                    <p className="count"><strong>{appel}</strong></p>
-                    <Button type="button" className="btnmin" clickHandler={substractAppel} disabled={appel <= 0}>
-                        -1
-                    </Button>
+                    <Counter
+                        fruitCount={appel}
+                        setFruitCount={setAppel}
+                    />
                 </article>
 
                 <article>
                     <h2>🥝 Kiwi's</h2>
-                    <Button type="button" className="btnplus" clickHandler={addKiwi}>
-                        +1
-                    </Button>
-                    <p className="count"><strong>{kiwi}</strong></p>
-
-                    <Button type="button" className="btnmin" clickHandler={substractKiwi} disabled={kiwi <= 0}>
-                        -1
-                    </Button>
-
+                    <Counter
+                        fruitCount={kiwi}
+                        setFruitCount={setKiwi}
+                    />
                 </article>
 
 
-                <Button type="button" className="btnreset" clickHandler={resetAll}>
-                    Reset
-                </Button>
+                <Button type="button" clickHandler={resetAll}>Reset</Button>
 
             </section>
 
             <form onSubmit={handleSubmit}>
                 <section>
-                <label htmlFor="firstname-field">Voornaam </label>
-                    <input
-                        name="firstname"
-                        id="firstname-field"
-                        type="text"
-                        value={firstname}
-                        onChange={(event) => setFirstname(event.target.value)}
-                    />
+                    <InputField name="firstname" label="Voornaam" inputType="text" value={firstname} changeHandler={setFirstname}/>
                 </section>
                 <section>
-                <label htmlFor="lastname-field">Achternaam</label>
-                    <input
-                        name="lastname"
-                        id="lastname-field"
-                        type="text"
-                        value={lastname}
-                    onChange={(event) => setLastname(event.target.value)}
-                    />
-                </section>
-
-                <section>
-                <label htmlFor="age-field">Leeftijd</label>
-                    <input
-                        name="age"
-                        id="age-field"
-                        type="date"
-                        value={age}
-                        onChange={(event) => setAge(event.target.value)}
-                    />
+                    <InputField name="lastname" label="Achternaam" inputType="text" value={lastname} changeHandler={setLastname}/>
                 </section>
                 <section>
-                <label htmlFor="zipcode-field">Postcode</label>
-                    <input
-                        type="text"
-                        className="postCode"/>
-
+                    <InputField name="age" label="Leeftijd" inputType="date" value={age} changeHandler={setAge}/>
                 </section>
-                <p>Bezorgfrequentie</p>
-                <label htmlFor="sending">
-
-                    <select name="Bezorgfrequenties" id="dropbox">
+                <section>
+                    <InputField name="zipcode" label="Postcode" inputType="text" value={zipcode} changeHandler={setZipcode}/>
+                </section>
+                <section>
+                    <label htmlFor="delivery-field">Bezorgfrequentie</label>
+                </section>
+                <section>
+                <select
+                    name="delivery"
+                    id="delivery-field"
+                    value={deliveryFrequency}
+                    onChange={(event) => toggleDeliveryFrequency(event.target.value)}
+                >
                         <option value="iedere week">iedere week</option>
                         <option value="om de week">om de week</option>
                         <option value="iedere maand">iedere maand</option>
 
                     </select>
-                </label>
-                <label htmlFor="radiobutton">
-                    <input type="radio" className="overdag"/>
-                    Overdag
-                    <input type="radio" className="avond"/>
-                    's Avonds
-                </label>
+                </section>
+               <section>
+                <input
+                    type="radio"
+                    value="daytime"
+                    name="timeslot"
+                    id="timeslot-field-daytime"
+                    checked={deliveryTimeslot === 'daytime'}
+                    onChange={(event) => toggleDeliveryTimeslot(event.target.value)}
+                />
+                <label htmlFor="timeslot-field-daytime">Overdag</label>
 
-                <label htmlFor="opmerking">
-                    Opmerking <br/>
-                    <input type="text" className="opmerkingField"/>
-                </label>
-
+                <input type="radio"
+                       value="nighttime"
+                       name="timeslot"
+                       id="timeslot-field-nighttime"
+                       checked={deliveryTimeslot === 'nighttime'}
+                       onChange={(event) => toggleDeliveryTimeslot(event.target.value)}
+                />
+                <label htmlFor="timeslot-field-nighttime">'s Avonds</label>
+               </section>
+                <section>
+                <label htmlFor="remark-field">Opmerking </label>
+                    <textarea
+                        name="remark"
+                        id="remark-field"
+                        value={remark}
+                        cols={40}
+                        rows={6}
+                        onChange={(event) => setRemark(event.target.value)}
+                    />
+                </section>
+                <section>
                 <input
                     type="checkbox"
                     name="agree"
@@ -237,7 +171,7 @@ function App() {
                     onChange={(event) => toggleAgreeTerms(event.target.checked)}
                 />
                 <label htmlFor="agree-field">Ik ga akkoord met de voorwaarden</label>
-
+                </section>
                 <button type="submit">Verzend</button>
 
             </form>

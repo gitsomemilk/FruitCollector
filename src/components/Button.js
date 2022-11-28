@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ type, className, children,clickHandler,disabled}) => {
+function Button({ type, className, children,clickHandler,disabled}) {
     return (
         <button
             type={ type }
@@ -11,6 +11,6 @@ const Button = ({ type, className, children,clickHandler,disabled}) => {
             {children}
         </button>
     );
-};
+}
 
 export default Button;
